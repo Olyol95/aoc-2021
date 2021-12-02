@@ -14,7 +14,7 @@ sub part_1 {
 
     my $sub = AoC::Solution::Day2::Submarine->new;
 
-    foreach my $instr ($self->_instructions) {
+    foreach my $instr (@{ $self->input }) {
         if ($instr->{direction} eq 'forward') {
             $sub->impulse({ x => $instr->{magnitude} });
         }
@@ -37,7 +37,7 @@ sub part_2 {
 
     my $sub = AoC::Solution::Day2::Submarine->new;
 
-    foreach my $instr ($self->_instructions) {
+    foreach my $instr (@{ $self->input }) {
         if ($instr->{direction} eq 'forward') {
             $sub->impulse({
                 x => $instr->{magnitude},
@@ -58,16 +58,18 @@ sub part_2 {
     return $sub->location->{x} * $sub->location->{z};
 }
 
-sub _instructions {
+sub _parse_input {
     my $self = shift;
 
-    return map {
+    my @instructions = map {
         my ($direction, $magnitude) = split(/\s+/, $_);
         {
             direction => $direction,
             magnitude => $magnitude,
         }
     } split(/\n/, $self->input);
+
+    return \@instructions;
 }
 
 1;

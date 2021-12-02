@@ -36,9 +36,17 @@ Get or set the input to be used for the solution
 =cut
 
 has input => (
-    is       => 'ro',
+    is       => 'rwp',
     required => 1,
 );
+
+sub BUILD {
+    my $self = shift;
+
+    $self->_set_input(
+        $self->_parse_input,
+    );
+}
 
 =item part_1
 
@@ -58,6 +66,15 @@ Returns the solution to part two of the problem
 
 sub part_2 {
     return "Not implemented";
+}
+
+### Private methods
+
+# Parses the provided input into a format specific to the problem
+sub _parse_input {
+    my $self = shift;
+
+    return [ split(/\n/, $self->input) ];
 }
 
 1;

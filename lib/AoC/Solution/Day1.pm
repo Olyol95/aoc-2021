@@ -8,7 +8,7 @@ with 'AoC::Solution';
 sub part_1 {
     my $self = shift;
 
-    my @readings = $self->_readings;
+    my @readings = @{ $self->input };
 
     my $total_increases = 0;
     for (my $idx = 1; $idx < @readings; $idx++) {
@@ -23,7 +23,7 @@ sub part_1 {
 sub part_2 {
     my $self = shift;
 
-    my @readings = $self->_readings;
+    my @readings = @{ $self->input };
 
     my $prev_sum = 0;
     my $total_increases = 0;
@@ -41,12 +41,6 @@ sub part_2 {
     }
 
     return $total_increases;
-}
-
-sub _readings {
-    my $self = shift;
-
-    return split(/\n/, $self->input);
 }
 
 1;
