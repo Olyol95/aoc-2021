@@ -14,7 +14,7 @@ PERL5LIB=lib bin/aoc-2021 --day <day> --input <path/to/input/file>
 
     The day to return the solution for. Must be an integer.
 
-- `-i/--input`
+- `-i/--input <path/to/input/file>`
 
     Path to a file to load the input data from.
 

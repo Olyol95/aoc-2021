@@ -39,7 +39,7 @@ GetOptions(
 
 The day to return the solution for. Must be an integer.
 
-=item -i/--input
+=item -i/--input <path/to/input/file>
 
 Path to a file to load the input data from.
 
